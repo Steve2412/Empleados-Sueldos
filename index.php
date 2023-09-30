@@ -74,6 +74,7 @@ if ((isset($_POST['nombre']) && isset($_POST['edad']) && isset($_POST['estado'])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Act. 1</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tabla.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -128,34 +129,49 @@ if ((isset($_POST['nombre']) && isset($_POST['edad']) && isset($_POST['estado'])
 
     </form>
 
-<h2>Lista empleados</h2>
+    <div class="container">
+                      
+                                
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title m-b-0">Lista de empleados</h5>
+                            </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Nombre y Apellido</th>
+                                                <th scope="col">Edad</th>
+                                                <th scope="col">Estado Civil</th>
+                                                <th scope="col">Sexo</th>
+                                                <th scope="col">Sueldo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="customtable">
+                                        <?php
+                                        foreach ($lista_empleados as $empleado) {
+                                          echo "<tr>";
+                                          echo "<td>", $empleado->get_nombre(), "</td>";
+                                          echo "<td>", $empleado->get_edad(), "</td>";
+                                          echo "<td>", $empleado->get_estado(), "</td>";
+                                          echo "<td>", $empleado->get_sexo(), "</td>";
+                                          echo "<td>", $empleado->get_sueldo(), "</td>";
+                                          echo "</tr>";
 
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nombre y Apellido</th>
-      <th scope="col">Edad</th>
-      <th scope="col">Estado Civil</th>
-      <th scope="col">Sexo</th>
-      <th scope="col">Sueldo</th>
-    </tr>   
-  </thead>
-  <tbody>
-  <?php
-          foreach ($lista_empleados as $empleado) {
-            echo "<tr>";
-            echo "<td>", $empleado->get_nombre(), "</td>";
-            echo "<td>", $empleado->get_edad(), "</td>";
-            echo "<td>", $empleado->get_estado(), "</td>";
-            echo "<td>", $empleado->get_sexo(), "</td>";
-            echo "<td>", $empleado->get_sueldo(), "</td>";
-            echo "</tr>";
+                                        }
 
-          }
+                                        ?>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                </div>
 
-          ?>
-  </tbody>
-</table>
+                   </div> 
 <br><br>
 
 <h2>Datos Filtrados</h2>
